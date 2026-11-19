@@ -41,3 +41,54 @@ The project follows three data-processing layers:
 Bronze → Silver → Gold
 
 Raw Data → Cleaned Data → Business-Ready Data
+
+## 3. Gold Dimensional Model
+
+The Gold layer follows a dimensional modelling approach using fact tables and dimension tables.
+
+### 3.1 Dimension Tables
+
+| Table | Grain | Description |
+|---|---|---|
+| gold_dim_customers | One row per customer_unique_id | Stores customer-level information and location attributes |
+| gold_dim_products | One row per product_id | Stores product details and product categories |
+| gold_dim_sellers | One row per seller_id | Stores seller information and geographic attributes |
+| gold_dim_date | One row per calendar date | Stores date attributes for time-based analysis |
+
+### 3.2 Fact Tables
+
+| Table | Grain | Description |
+|---|---|---|
+| gold_fact_orders | One row per order_id | Stores order-level information, status and lifecycle dates |
+| gold_fact_order_items | One row per order_id and order_item_id | Stores individual product items, prices and freight values |
+| gold_fact_payments | One row per order_id and payment_sequential | Stores payment transactions and payment values |
+| gold_fact_reviews | One row per order_id and review_id | Stores customer review scores and review information |
+
+### 3.3 Fact and Dimension Relationships
+
+The Gold dimensional model connects business events to descriptive dimensions through surrogate keys.
+
+Key relationships include:
+
+- Orders → Customers using customer_key.
+- Order Items → Products using product_key.
+- Order Items → Sellers using seller_key.
+- Orders and Order Items → Date using date_key fields.
+- Payments → Orders using order_id.
+- Reviews → Orders using order_id.
+
+Customer mapping is performed through the following relationship:
+
+silver_orders.customer_id → silver_customers.customer_id → customer_unique_id → gold_dim_customers.customer_unique_id → customer_key.
+
+This mapping ensures that multiple customer records belonging to the same actual customer are associated with one customer dimension record.
+
+### 3.4 Important Grain Considerations
+
+- The grain of a fact table determines what one row represents.
+- An order can contain multiple order items.
+- An order can have multiple payment records.
+- Review identifiers may repeat across different orders.
+- Therefore, the correct composite grain must be considered when joining and aggregating fact tables.
+
+These grain definitions help prevent duplicate counting and incorrect business metrics.
