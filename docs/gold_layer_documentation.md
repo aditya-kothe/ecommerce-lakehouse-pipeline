@@ -92,3 +92,82 @@ This mapping ensures that multiple customer records belonging to the same actual
 - Therefore, the correct composite grain must be considered when joining and aggregating fact tables.
 
 These grain definitions help prevent duplicate counting and incorrect business metrics.
+
+## 4. Gold KPI Reporting Tables
+
+The Gold layer includes five reusable KPI reporting tables designed to support business analytics and reporting.
+
+### 4.1 Monthly KPI – gold_monthly_kpi
+
+**Grain:** One row per year and month.
+
+Metrics:
+- Total orders
+- Total items sold
+- Total product revenue
+- Total freight
+- Average order value
+- Delivered orders
+
+### 4.2 Payment KPI – gold_payment_kpi
+
+**Grain:** One row per payment type.
+
+Metrics:
+- Total payment transactions
+- Distinct orders
+- Total payment value
+- Average payment value
+- Payment percentage contribution
+
+### 4.3 Order Status KPI – gold_order_status_kpi
+
+**Grain:** One row per order status.
+
+Metrics:
+- Total orders
+- Order percentage
+
+### 4.4 Customer KPI – gold_customer_kpi
+
+**Grain:** One overall customer summary row.
+
+Metrics:
+- Total customers
+- One-time customers
+- Repeat customers
+- Average orders per customer
+- Repeat customer percentage
+
+### 4.5 Review KPI – gold_review_kpi
+
+**Grain:** One overall review summary row.
+
+Metrics:
+- Total reviews
+- Average review score
+- Positive reviews (scores 4–5)
+- Negative reviews (scores 1–2)
+- Neutral reviews (score 3)
+- Positive review percentage
+
+## 5. Gold Layer Validation
+
+The Gold layer was validated through:
+
+- Row-count validation for all dimension and fact tables.
+- Foreign-key integrity checks.
+- Silver-to-Gold measure reconciliation.
+- KPI reporting table validation.
+- Business metric reconciliation against analytical SQL queries.
+
+All 13 Gold tables passed the final row-count validation.
+
+### Gold Layer Summary
+
+| Category | Number of Tables |
+|---|---:|
+| Dimension tables | 4 |
+| Fact tables | 4 |
+| KPI reporting tables | 5 |
+| **Total** | **13** |
