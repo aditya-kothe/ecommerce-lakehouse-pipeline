@@ -22,3 +22,11 @@ Thumbs.db
 # Logs and temporary files
 *.log
 tmp/
+
+# Logs and temporary files
+*.log
+tmp/
+
+# Databricks and notebook checkpoints
+.ipynb_checkpoints/
+*.dbc
