@@ -71,10 +71,16 @@ Next phase: Repository cleanup, testing, and final project presentation.
 
 ## 8. Engineering Practices
 
-Planned practices include data quality checks, incremental loads,
-deduplication, idempotent processing, logging, testing, and
-version control.
+The project follows these engineering practices:
 
+- Data quality and validation checks.
+- Deduplication and data standardization.
+- Referential integrity validation.
+- Delta Lake-based storage.
+- Reusable SQL queries for analytics and reporting.
+- Git and GitHub for version control.
+- Documentation of data models, business metrics, and validation results.
+  
 ## 9. Disclaimer
 
 This is an educational portfolio project using public historical
