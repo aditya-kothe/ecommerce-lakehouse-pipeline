@@ -39,15 +39,13 @@ Source Data -> Bronze -> Silver -> Gold -> Analytics
   
 ## 5. Data Sources
 
-The primary source will be the public Olist Brazilian E-Commerce
-dataset.
+The project uses the public Olist Brazilian E-Commerce dataset.
 
-Dataset page:
-https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce
+Dataset page: [Olist Brazilian E-Commerce Dataset](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)
 
-Source data will be downloaded separately. Dataset attribution,
-license requirements, and download instructions will be documented
-before ingestion begins.
+The dataset contains historical e-commerce data covering customers, orders, order items, payments, reviews, products, sellers, and geolocation.
+
+The source files were downloaded and processed through the Bronze, Silver, and Gold layers.
 
 ## 6. Repository Structure
 
