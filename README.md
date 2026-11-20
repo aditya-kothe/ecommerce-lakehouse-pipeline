@@ -28,14 +28,15 @@ and produces analytics-ready datasets.
 - Python
 - Git and GitHub
 
-## 4. Planned Architecture
+## 4. Architecture
 
 Source Data -> Bronze -> Silver -> Gold -> Analytics
 
-- Bronze: Raw ingested data and ingestion metadata.
-- Silver: Cleaned, standardized, deduplicated data.
-- Gold: Fact tables, dimension tables, and business metrics.
-
+- **Bronze:** Raw data ingestion with source-file and ingestion metadata.
+- **Silver:** Cleaned, standardized, and validated data.
+- **Gold:** Dimensional data model with fact tables, dimension tables, and business KPI tables.
+- **Analytics:** SQL-based business analysis and reporting.
+  
 ## 5. Data Sources
 
 The primary source will be the public Olist Brazilian E-Commerce
